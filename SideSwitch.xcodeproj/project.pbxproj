@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A2D73FE197F748200DB5359 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2D73FD197F748200DB5359 /* Cocoa.framework */; };
+		4A2D7408197F748200DB5359 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D7406197F748200DB5359 /* InfoPlist.strings */; };
+		4A2D740A197F748200DB5359 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D7409197F748200DB5359 /* main.m */; };
+		4A2D740E197F748200DB5359 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D740C197F748200DB5359 /* Credits.rtf */; };
+		4A2D7411197F748200DB5359 /* SSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D7410197F748200DB5359 /* SSAppDelegate.m */; };
+		4A2D7414197F748200DB5359 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D7412197F748200DB5359 /* MainMenu.xib */; };
+		4A2D7416197F748200DB5359 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D7415197F748200DB5359 /* Images.xcassets */; };
+		4A2D741D197F748300DB5359 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2D741C197F748300DB5359 /* XCTest.framework */; };
+		4A2D741E197F748300DB5359 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2D73FD197F748200DB5359 /* Cocoa.framework */; };
+		4A2D7426197F748300DB5359 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D7424197F748300DB5359 /* InfoPlist.strings */; };
+		4A2D7428197F748300DB5359 /* SideSwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D7427197F748300DB5359 /* SideSwitchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A2D741F197F748300DB5359 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A2D73F2197F748200DB5359 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A2D73F9197F748200DB5359;
+			remoteInfo = SideSwitch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4A2D73FA197F748200DB5359 /* SideSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A2D73FD197F748200DB5359 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4A2D7400197F748200DB5359 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4A2D7401197F748200DB5359 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4A2D7402197F748200DB5359 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4A2D7405197F748200DB5359 /* SideSwitch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SideSwitch-Info.plist"; sourceTree = "<group>"; };
+		4A2D7407197F748200DB5359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4A2D7409197F748200DB5359 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A2D740B197F748200DB5359 /* SideSwitch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SideSwitch-Prefix.pch"; sourceTree = "<group>"; };
+		4A2D740D197F748200DB5359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		4A2D740F197F748200DB5359 /* SSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSAppDelegate.h; sourceTree = "<group>"; };
+		4A2D7410197F748200DB5359 /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAppDelegate.m; sourceTree = "<group>"; };
+		4A2D7413197F748200DB5359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4A2D7415197F748200DB5359 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4A2D741B197F748300DB5359 /* SideSwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SideSwitchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A2D741C197F748300DB5359 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4A2D7423197F748300DB5359 /* SideSwitchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SideSwitchTests-Info.plist"; sourceTree = "<group>"; };
+		4A2D7425197F748300DB5359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4A2D7427197F748300DB5359 /* SideSwitchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SideSwitchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A2D73F7197F748200DB5359 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D73FE197F748200DB5359 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A2D7418197F748300DB5359 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D741E197F748300DB5359 /* Cocoa.framework in Frameworks */,
+				4A2D741D197F748300DB5359 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A2D73F1197F748200DB5359 = {
+			isa = PBXGroup;
+			children = (
+				4A2D7403197F748200DB5359 /* SideSwitch */,
+				4A2D7421197F748300DB5359 /* SideSwitchTests */,
+				4A2D73FC197F748200DB5359 /* Frameworks */,
+				4A2D73FB197F748200DB5359 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A2D73FB197F748200DB5359 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D73FA197F748200DB5359 /* SideSwitch.app */,
+				4A2D741B197F748300DB5359 /* SideSwitchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A2D73FC197F748200DB5359 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D73FD197F748200DB5359 /* Cocoa.framework */,
+				4A2D741C197F748300DB5359 /* XCTest.framework */,
+				4A2D73FF197F748200DB5359 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A2D73FF197F748200DB5359 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D7400197F748200DB5359 /* AppKit.framework */,
+				4A2D7401197F748200DB5359 /* CoreData.framework */,
+				4A2D7402197F748200DB5359 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4A2D7403197F748200DB5359 /* SideSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D740F197F748200DB5359 /* SSAppDelegate.h */,
+				4A2D7410197F748200DB5359 /* SSAppDelegate.m */,
+				4A2D7412197F748200DB5359 /* MainMenu.xib */,
+				4A2D7415197F748200DB5359 /* Images.xcassets */,
+				4A2D7404197F748200DB5359 /* Supporting Files */,
+			);
+			path = SideSwitch;
+			sourceTree = "<group>";
+		};
+		4A2D7404197F748200DB5359 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D7405197F748200DB5359 /* SideSwitch-Info.plist */,
+				4A2D7406197F748200DB5359 /* InfoPlist.strings */,
+				4A2D7409197F748200DB5359 /* main.m */,
+				4A2D740B197F748200DB5359 /* SideSwitch-Prefix.pch */,
+				4A2D740C197F748200DB5359 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A2D7421197F748300DB5359 /* SideSwitchTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D7427197F748300DB5359 /* SideSwitchTests.m */,
+				4A2D7422197F748300DB5359 /* Supporting Files */,
+			);
+			path = SideSwitchTests;
+			sourceTree = "<group>";
+		};
+		4A2D7422197F748300DB5359 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A2D7423197F748300DB5359 /* SideSwitchTests-Info.plist */,
+				4A2D7424197F748300DB5359 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A2D73F9197F748200DB5359 /* SideSwitch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A2D742B197F748300DB5359 /* Build configuration list for PBXNativeTarget "SideSwitch" */;
+			buildPhases = (
+				4A2D73F6197F748200DB5359 /* Sources */,
+				4A2D73F7197F748200DB5359 /* Frameworks */,
+				4A2D73F8197F748200DB5359 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SideSwitch;
+			productName = SideSwitch;
+			productReference = 4A2D73FA197F748200DB5359 /* SideSwitch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A2D741A197F748300DB5359 /* SideSwitchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A2D742E197F748300DB5359 /* Build configuration list for PBXNativeTarget "SideSwitchTests" */;
+			buildPhases = (
+				4A2D7417197F748300DB5359 /* Sources */,
+				4A2D7418197F748300DB5359 /* Frameworks */,
+				4A2D7419197F748300DB5359 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A2D7420197F748300DB5359 /* PBXTargetDependency */,
+			);
+			name = SideSwitchTests;
+			productName = SideSwitchTests;
+			productReference = 4A2D741B197F748300DB5359 /* SideSwitchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A2D73F2197F748200DB5359 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SS;
+				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					4A2D741A197F748300DB5359 = {
+						TestTargetID = 4A2D73F9197F748200DB5359;
+					};
+				};
+			};
+			buildConfigurationList = 4A2D73F5197F748200DB5359 /* Build configuration list for PBXProject "SideSwitch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A2D73F1197F748200DB5359;
+			productRefGroup = 4A2D73FB197F748200DB5359 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A2D73F9197F748200DB5359 /* SideSwitch */,
+				4A2D741A197F748300DB5359 /* SideSwitchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A2D73F8197F748200DB5359 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D7408197F748200DB5359 /* InfoPlist.strings in Resources */,
+				4A2D7416197F748200DB5359 /* Images.xcassets in Resources */,
+				4A2D740E197F748200DB5359 /* Credits.rtf in Resources */,
+				4A2D7414197F748200DB5359 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A2D7419197F748300DB5359 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D7426197F748300DB5359 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A2D73F6197F748200DB5359 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D7411197F748200DB5359 /* SSAppDelegate.m in Sources */,
+				4A2D740A197F748200DB5359 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A2D7417197F748300DB5359 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D7428197F748300DB5359 /* SideSwitchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A2D7420197F748300DB5359 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A2D73F9197F748200DB5359 /* SideSwitch */;
+			targetProxy = 4A2D741F197F748300DB5359 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4A2D7406197F748200DB5359 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A2D7407197F748200DB5359 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4A2D740C197F748200DB5359 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A2D740D197F748200DB5359 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		4A2D7412197F748200DB5359 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A2D7413197F748200DB5359 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		4A2D7424197F748300DB5359 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A2D7425197F748300DB5359 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A2D7429197F748300DB5359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4A2D742A197F748300DB5359 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4A2D742C197F748300DB5359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
+				INFOPLIST_FILE = "SideSwitch/SideSwitch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4A2D742D197F748300DB5359 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
+				INFOPLIST_FILE = "SideSwitch/SideSwitch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4A2D742F197F748300DB5359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SideSwitch.app/Contents/MacOS/SideSwitch";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SideSwitchTests/SideSwitchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4A2D7430197F748300DB5359 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SideSwitch.app/Contents/MacOS/SideSwitch";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
+				INFOPLIST_FILE = "SideSwitchTests/SideSwitchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A2D73F5197F748200DB5359 /* Build configuration list for PBXProject "SideSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A2D7429197F748300DB5359 /* Debug */,
+				4A2D742A197F748300DB5359 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A2D742B197F748300DB5359 /* Build configuration list for PBXNativeTarget "SideSwitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A2D742C197F748300DB5359 /* Debug */,
+				4A2D742D197F748300DB5359 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4A2D742E197F748300DB5359 /* Build configuration list for PBXNativeTarget "SideSwitchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A2D742F197F748300DB5359 /* Debug */,
+				4A2D7430197F748300DB5359 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A2D73F2197F748200DB5359 /* Project object */;
+}
