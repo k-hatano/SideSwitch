@@ -466,6 +466,7 @@
 				4A2D742D197F748300DB5359 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4A2D742E197F748300DB5359 /* Build configuration list for PBXNativeTarget "SideSwitchTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +475,7 @@
 				4A2D7430197F748300DB5359 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

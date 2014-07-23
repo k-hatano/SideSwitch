@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SSAppDelegate : NSObject <NSApplicationDelegate>
+@interface SSAppDelegate : NSObject <NSApplicationDelegate>{
+    IBOutlet NSArrayController *arrayController;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 
