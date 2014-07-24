@@ -10,8 +10,12 @@
 
 @interface SSAppDelegate : NSObject <NSApplicationDelegate>{
     IBOutlet NSArrayController *arrayController;
+    IBOutlet NSPanel *panel;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+
+- (void)showSwitcher;
+- (void)hideSwitcher;
 
 @end
