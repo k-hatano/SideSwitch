@@ -11,6 +11,10 @@
 @implementation SSAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
+    NSRect dstRect=[panel frame];
+    dstRect.size.height=[[NSScreen mainScreen] frame].size.height-22;
+    [panel setFrame:dstRect display:YES];
+    
     [NSThread detachNewThreadSelector:@selector(heartbeat:) toTarget:self withObject:nil];
 }
 
@@ -47,17 +51,18 @@
             }
             if(!flg) continue;
             NSNumber *winId=CFDictionaryGetValue(dict, kCGWindowNumber);
-            [arrayController addObject:@{@"window":[NSString stringWithFormat:@"%@",name],@"icon":icon,@"id":winId,@"appName":appName}];
+            [arrayController addObject:@{@"window":[NSString stringWithFormat:@"%@",name],@"icon":icon,@"winId":winId,@"appName":appName}];
         }
+        [arrayController setSelectionIndex:0];
         
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
         dstRect.origin.x=0;
-        [panel setFrame:srcRect display:YES];
+        [panel setFrame:srcRect display:YES animate:NO];
         [panel setIsVisible:YES];
         
         [panel setFrame:dstRect display:YES animate:YES];
-        [panel displayIfNeeded];
+        [panel display];
         
         initializing=NO;
     }
@@ -69,7 +74,7 @@
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
         dstRect.origin.x=-dstRect.size.width;
-        [panel setFrame:srcRect display:YES];
+        [panel setFrame:srcRect display:YES animate:NO];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel setIsVisible:NO];
@@ -79,11 +84,12 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
     if(initializing) return;
     
-    NSLog(@"%lu",[arrayController selectionIndex]);
-    
     NSDictionary *dict=[[arrayController selectedObjects] objectAtIndex:0];
     NSString *appName=[dict objectForKey:@"appName"];
-    NSString *script=[NSString stringWithFormat:@"tell application \"%@\" to activate",appName];
+    NSString *winId=[[dict objectForKey:@"winId"] stringValue];
+    NSString *script=[NSString stringWithFormat:
+                      @"tell application \"%@\" \n activate \n end tell \n tell application \"System Events\" \n set theprocess to the first process whose frontmost is true \n windows of theprocess \n tell window id %@ of theprocess \n perform action \"AXRaise\" \n end tell \n end tell"
+                      ,appName,winId];
     NSAppleScript *appleScript=[[NSAppleScript alloc] initWithSource:script];
     [appleScript executeAndReturnError:nil];
 }
