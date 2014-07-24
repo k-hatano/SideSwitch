@@ -11,11 +11,14 @@
 @interface SSAppDelegate : NSObject <NSApplicationDelegate>{
     IBOutlet NSArrayController *arrayController;
     IBOutlet NSPanel *panel;
+    
+    BOOL initializing;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 
 - (void)showSwitcher;
 - (void)hideSwitcher;
+- (void)heartbeat:(NSThread*)thread;
 
 @end
