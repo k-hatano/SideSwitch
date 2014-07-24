@@ -13,7 +13,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
     NSRect dstRect=[panel frame];
     dstRect.size.height=[[NSScreen mainScreen] frame].size.height-22;
+    dstRect.origin.y=0;
     [panel setFrame:dstRect display:YES];
+    [panel setIsVisible:YES];
+    [panel display];
     
     [NSThread detachNewThreadSelector:@selector(heartbeat:) toTarget:self withObject:nil];
 }
@@ -60,6 +63,7 @@
         dstRect.origin.x=0;
         [panel setFrame:srcRect display:YES animate:NO];
         [panel setIsVisible:YES];
+        [panel display];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel display];
@@ -75,9 +79,11 @@
         NSRect dstRect=[panel frame];
         dstRect.origin.x=-dstRect.size.width;
         [panel setFrame:srcRect display:YES animate:NO];
+        [panel display];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel setIsVisible:NO];
+        [panel display];
     }
 }
 

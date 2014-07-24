@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		379C5F3B19814BF400D23B79 /* SSScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379C5F3A19814BF400D23B79 /* SSScrollView.m */; };
 		4A2D73FE197F748200DB5359 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2D73FD197F748200DB5359 /* Cocoa.framework */; };
 		4A2D7408197F748200DB5359 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A2D7406197F748200DB5359 /* InfoPlist.strings */; };
 		4A2D740A197F748200DB5359 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D7409197F748200DB5359 /* main.m */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		379C5F3919814BF400D23B79 /* SSScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSScrollView.h; sourceTree = "<group>"; };
+		379C5F3A19814BF400D23B79 /* SSScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSScrollView.m; sourceTree = "<group>"; };
 		4A2D73FA197F748200DB5359 /* SideSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A2D73FD197F748200DB5359 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4A2D7400197F748200DB5359 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 				4A2D7412197F748200DB5359 /* MainMenu.xib */,
 				4A2D7415197F748200DB5359 /* Images.xcassets */,
 				4A2D7404197F748200DB5359 /* Supporting Files */,
+				379C5F3919814BF400D23B79 /* SSScrollView.h */,
+				379C5F3A19814BF400D23B79 /* SSScrollView.m */,
 			);
 			path = SideSwitch;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379C5F3B19814BF400D23B79 /* SSScrollView.m in Sources */,
 				4A2D7411197F748200DB5359 /* SSAppDelegate.m in Sources */,
 				4A2D740A197F748200DB5359 /* main.m in Sources */,
 			);
@@ -389,7 +395,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
 				INFOPLIST_FILE = "SideSwitch/SideSwitch-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -402,7 +410,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SideSwitch/SideSwitch-Prefix.pch";
 				INFOPLIST_FILE = "SideSwitch/SideSwitch-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
