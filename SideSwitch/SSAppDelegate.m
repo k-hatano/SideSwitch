@@ -13,10 +13,13 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
     NSRect dstRect=[panel frame];
     dstRect.size.height=[[NSScreen mainScreen] frame].size.height-22;
+    dstRect.origin.x=-dstRect.size.width;
     dstRect.origin.y=0;
-    [panel setFrame:dstRect display:YES];
+    [panel setFloatingPanel:YES];
+    [panel setFrame:dstRect display:NO];
     [panel setIsVisible:YES];
-    [panel display];
+    [panel setIsVisible:NO];
+    initializing=YES;
     
     [NSThread detachNewThreadSelector:@selector(heartbeat:) toTarget:self withObject:nil];
 }
@@ -29,10 +32,8 @@
         NSRange range = NSMakeRange(0, [[arrayController arrangedObjects] count]);
         [arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
         
-        [panel setFloatingPanel:YES];
-        
+        [panel setIsVisible:NO];
         NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
-        
         CFArrayRef windowList =CGWindowListCopyWindowInfo((kCGWindowListOptionOnScreenOnly|kCGWindowListExcludeDesktopElements), kCGNullWindowID);
         for(int i=0;i < CFArrayGetCount(windowList); i++){
             BOOL flg=NO;
@@ -54,19 +55,18 @@
             }
             if(!flg) continue;
             NSNumber *winId=CFDictionaryGetValue(dict, kCGWindowNumber);
-            [arrayController addObject:@{@"window":[NSString stringWithFormat:@"%@",name],@"icon":icon,@"winId":winId,@"appName":appName}];
+            [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName}];
         }
         [arrayController setSelectionIndex:0];
         
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
         dstRect.origin.x=0;
-        [panel setFrame:srcRect display:YES animate:NO];
+        dstRect.size.height=dstRect.size.height+1;
+        [panel setFrame:srcRect display:NO animate:NO];
         [panel setIsVisible:YES];
-        [panel display];
         
         [panel setFrame:dstRect display:YES animate:YES];
-        [panel display];
         
         initializing=NO;
     }
@@ -78,12 +78,11 @@
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
         dstRect.origin.x=-dstRect.size.width;
-        [panel setFrame:srcRect display:YES animate:NO];
-        [panel display];
+        dstRect.size.height=dstRect.size.height-1;
+        [panel setFrame:srcRect display:NO animate:NO];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel setIsVisible:NO];
-        [panel display];
     }
 }
 
@@ -92,10 +91,11 @@
     
     NSDictionary *dict=[[arrayController selectedObjects] objectAtIndex:0];
     NSString *appName=[dict objectForKey:@"appName"];
-    NSString *winId=[[dict objectForKey:@"winId"] stringValue];
+    NSString *winName=[dict objectForKey:@"window"];
     NSString *script=[NSString stringWithFormat:
-                      @"tell application \"%@\" \n activate \n end tell \n tell application \"System Events\" \n set theprocess to the first process whose frontmost is true \n windows of theprocess \n tell window id %@ of theprocess \n perform action \"AXRaise\" \n end tell \n end tell"
-                      ,appName,winId];
+                      @"tell application \"System Events\" \n tell process \"%@\" \n set thewindow to first window of (windows whose name is \"%@\") \n tell thewindow \n perform action \"AXRaise\" \n end tell \n  set frontmost to true \n end tell \n end tell"
+                      ,appName,winName];
+    NSLog(@"%@",script);
     NSAppleScript *appleScript=[[NSAppleScript alloc] initWithSource:script];
     [appleScript executeAndReturnError:nil];
 }

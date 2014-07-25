@@ -11,6 +11,7 @@
 @interface SSAppDelegate : NSObject <NSApplicationDelegate>{
     IBOutlet NSArrayController *arrayController;
     IBOutlet NSPanel *panel;
+    IBOutlet NSTableView *table;
     
     BOOL initializing;
 }
