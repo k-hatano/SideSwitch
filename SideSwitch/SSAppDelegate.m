@@ -70,6 +70,7 @@
             [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName,@"textColor":isOnScreen?[NSColor whiteColor]:[NSColor lightGrayColor]}];
         }
         [arrayController setSelectionIndex:0];
+        CFBridgingRelease(windowList);
         
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
