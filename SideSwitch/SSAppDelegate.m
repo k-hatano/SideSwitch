@@ -38,6 +38,11 @@
         for(int i=0;i < CFArrayGetCount(windowList); i++){
             BOOL flg=NO;
             CFDictionaryRef dict = CFArrayGetValueAtIndex(windowList, i);
+            
+            if ((int)CFDictionaryGetValue(dict, kCGWindowLayer)>1000) {
+                continue;
+            }
+            
             CFStringRef n = CFDictionaryGetValue(dict, kCGWindowName);
             NSString *name = (__bridge_transfer NSString *)n;
             if(name==nil || [name isEqualToString:@""]) continue;
@@ -45,8 +50,8 @@
             NSString *owner = (__bridge_transfer NSString *)o;
             NSImage *icon = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
             NSString *appName = nil;
-            for(NSRunningApplication* app in apps){
-                if([owner isEqualToString:app.localizedName]){
+            
+            for(NSRunningApplication* app in apps){if([owner isEqualToString:app.localizedName]){
                     appName=app.localizedName;
                     [icon lockFocus];
                     [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
@@ -68,7 +73,8 @@
         NSRect dstRect=[panel frame];
         dstRect.origin.x=0;
         dstRect.size.height=dstRect.size.height+1;
-        [panel setFrame:srcRect display:NO animate:NO];
+        [table reloadData];
+        [panel setFrame:srcRect display:YES animate:NO];
         [panel setIsVisible:YES];
         
         [panel setFrame:dstRect display:YES animate:YES];
@@ -86,7 +92,7 @@
         NSRect dstRect=[panel frame];
         dstRect.origin.x=-dstRect.size.width;
         dstRect.size.height=dstRect.size.height-1;
-        [panel setFrame:srcRect display:NO animate:NO];
+        [panel setFrame:srcRect display:YES animate:NO];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel setIsVisible:NO];
