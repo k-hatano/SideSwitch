@@ -723,6 +723,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="h90-VS-1G2"/>
+                                                <binding destination="c2T-Ao-zr1" name="textColor" keyPath="arrangedObjects.textColor" id="39y-oJ-azd"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -751,6 +752,7 @@
             <declaredKeys>
                 <string>window</string>
                 <string>icon</string>
+                <string>textColor</string>
             </declaredKeys>
         </arrayController>
     </objects>

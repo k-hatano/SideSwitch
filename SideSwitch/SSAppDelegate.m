@@ -50,6 +50,8 @@
             NSString *owner = (__bridge_transfer NSString *)o;
             NSImage *icon = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
             NSString *appName = nil;
+            NSString *ios = CFDictionaryGetValue(dict, kCGWindowIsOnscreen);
+            NSInteger isOnScreen = [ios integerValue];
             
             for(NSRunningApplication* app in apps){if([owner isEqualToString:app.localizedName]){
                     appName=app.localizedName;
@@ -65,7 +67,7 @@
             }
             if(!flg) continue;
             NSNumber *winId=CFDictionaryGetValue(dict, kCGWindowNumber);
-            [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName}];
+            [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName,@"textColor":isOnScreen?[NSColor whiteColor]:[NSColor lightGrayColor]}];
         }
         [arrayController setSelectionIndex:0];
         
