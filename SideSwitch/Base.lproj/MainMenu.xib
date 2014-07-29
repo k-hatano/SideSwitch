@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A298i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -15,7 +15,6 @@
         <customObject id="Voe-Tx-rLC" customClass="SSAppDelegate">
             <connections>
                 <outlet property="arrayController" destination="c2T-Ao-zr1" id="4iu-Uq-vhv"/>
-                <outlet property="column" destination="Zlq-Oj-iRI" id="Cyj-pJ-gwU"/>
                 <outlet property="panel" destination="0w8-HA-hwm" id="hVZ-uz-ZaM"/>
                 <outlet property="table" destination="2ht-K0-QHi" id="PJx-Ig-Qgb"/>
                 <outlet property="window" destination="0w8-HA-hwm" id="xEg-aH-4fM"/>
@@ -700,10 +699,14 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
-                                            <imageCell key="dataCell" lineBreakMode="truncatingTail" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" id="Dlr-yB-iz2"/>
+                                            <imageCell key="dataCell" lineBreakMode="truncatingTail" continuous="YES" alignment="left" animates="YES" imageAlignment="top" imageScaling="proportionallyDown" id="Dlr-yB-iz2"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.icon" id="F0B-ZA-1ZT"/>
+                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.icon" id="hZv-XC-Ndm">
+                                                    <dictionary key="options">
+                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn editable="NO" width="216" minWidth="26" maxWidth="1000" id="T3s-nI-UE6">

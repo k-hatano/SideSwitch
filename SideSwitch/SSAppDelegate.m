@@ -43,12 +43,17 @@
             if(name==nil || [name isEqualToString:@""]) continue;
             CFStringRef o = CFDictionaryGetValue(dict, kCGWindowOwnerName);
             NSString *owner = (__bridge_transfer NSString *)o;
-            NSImage *icon = [[NSImage alloc] init];
+            NSImage *icon = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
             NSString *appName = nil;
             for(NSRunningApplication* app in apps){
                 if([owner isEqualToString:app.localizedName]){
                     appName=app.localizedName;
-                    icon=app.icon;
+                    [icon lockFocus];
+                    [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
+                                fromRect:NSMakeRect(0, 0, app.icon.size.width, app.icon.size.height)
+                               operation:NSCompositeCopy
+                                fraction:1.0f];
+                    [icon unlockFocus];
                     flg=YES;
                     break;
                 }
@@ -67,8 +72,10 @@
         [panel setIsVisible:YES];
         
         [panel setFrame:dstRect display:YES animate:YES];
+        [table reloadData];
         
         initializing=NO;
+        
     }
 }
 
