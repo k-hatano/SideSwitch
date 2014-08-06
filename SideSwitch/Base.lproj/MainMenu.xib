@@ -722,8 +722,12 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="h90-VS-1G2"/>
                                                 <binding destination="c2T-Ao-zr1" name="textColor" keyPath="arrangedObjects.textColor" id="39y-oJ-azd"/>
+                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.name" id="V3w-P4-2r2">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -750,7 +754,7 @@
         <userDefaultsController representsSharedInstance="YES" id="io7-L9-NJZ"/>
         <arrayController id="c2T-Ao-zr1">
             <declaredKeys>
-                <string>window</string>
+                <string>name</string>
                 <string>icon</string>
                 <string>textColor</string>
             </declaredKeys>

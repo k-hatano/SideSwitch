@@ -29,48 +29,37 @@
     @synchronized(self){
         initializing=YES;
         
-        NSRange range = NSMakeRange(0, [[arrayController arrangedObjects] count]);
-        [arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        
+        int selection=0;
         
         [panel setIsVisible:NO];
         NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
-        CFArrayRef windowList =CGWindowListCopyWindowInfo((kCGWindowListOptionOnScreenOnly|kCGWindowListExcludeDesktopElements), kCGNullWindowID);
-        for(int i=0;i < CFArrayGetCount(windowList); i++){
-            BOOL flg=NO;
-            CFDictionaryRef dict = CFArrayGetValueAtIndex(windowList, i);
+        int i=0;
+        for(NSRunningApplication* app in apps){
+            if (app.activationPolicy != NSApplicationActivationPolicyRegular) continue;
             
-            if ((int)CFDictionaryGetValue(dict, kCGWindowLayer)>1000) {
-                continue;
-            }
-            
-            CFStringRef n = CFDictionaryGetValue(dict, kCGWindowName);
-            NSString *name = (__bridge_transfer NSString *)n;
-            if(name==nil || [name isEqualToString:@""]) continue;
-            CFStringRef o = CFDictionaryGetValue(dict, kCGWindowOwnerName);
-            NSString *owner = (__bridge_transfer NSString *)o;
             NSImage *icon = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
-            NSString *appName = nil;
-            NSString *ios = CFDictionaryGetValue(dict, kCGWindowIsOnscreen);
-            NSInteger isOnScreen = [ios integerValue];
+            [icon lockFocus];
+            [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
+                        fromRect:NSMakeRect(0, 0, app.icon.size.width, app.icon.size.height)
+                       operation:NSCompositeCopy
+                        fraction:1.0f];
+            [icon unlockFocus];
+            NSString *name=[NSString stringWithFormat:@"%@",[app localizedName]];
+            if(!name) name=@"";
             
-            for(NSRunningApplication* app in apps){if([owner isEqualToString:app.localizedName]){
-                    appName=app.localizedName;
-                    [icon lockFocus];
-                    [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
-                                fromRect:NSMakeRect(0, 0, app.icon.size.width, app.icon.size.height)
-                               operation:NSCompositeCopy
-                                fraction:1.0f];
-                    [icon unlockFocus];
-                    flg=YES;
-                    break;
-                }
-            }
-            if(!flg) continue;
-            NSNumber *winId=CFDictionaryGetValue(dict, kCGWindowNumber);
-            [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName,@"textColor":isOnScreen?[NSColor whiteColor]:[NSColor lightGrayColor]}];
+            NSDictionary *dic=@{@"icon":icon,@"name":name,@"textColor":app.hidden?[NSColor grayColor]:[NSColor whiteColor],@"pid":[NSNumber numberWithInteger:app.processIdentifier]};
+            [array addObject:dic];
+            
+            if(app.ownsMenuBar) selection=i;
+            i++;
         }
-        [arrayController setSelectionIndex:0];
-        CFBridgingRelease(windowList);
+        
+        NSRange range = NSMakeRange(0, [[arrayController arrangedObjects] count]);
+        [arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+        [arrayController addObjects:array];
+        [arrayController setSelectionIndex:selection];
         
         NSRect srcRect=[panel frame];
         NSRect dstRect=[panel frame];
@@ -106,14 +95,9 @@
     if(initializing) return;
     
     NSDictionary *dict=[[arrayController selectedObjects] objectAtIndex:0];
-    NSString *appName=[dict objectForKey:@"appName"];
-    NSString *winName=[dict objectForKey:@"window"];
-    NSString *script=[NSString stringWithFormat:
-                      @"tell application \"System Events\" \n tell process \"%@\" \n set thewindow to first window of (windows whose name is \"%@\") \n tell thewindow \n perform action \"AXRaise\" \n end tell \n  set frontmost to true \n end tell \n end tell"
-                      ,appName,winName];
-    NSLog(@"%@",script);
-    NSAppleScript *appleScript=[[NSAppleScript alloc] initWithSource:script];
-    [appleScript executeAndReturnError:nil];
+    NSInteger pid=[[dict objectForKey:@"pid"] integerValue];
+    
+    [[NSRunningApplication runningApplicationWithProcessIdentifier:(pid_t)pid] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
 }
 
 - (void)heartbeat:(NSThread*)thread{
