@@ -105,7 +105,9 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
     if(initializing) return;
     
-    NSDictionary *dict=[[arrayController selectedObjects] objectAtIndex:0];
+    NSArray* selections=[arrayController selectedObjects];
+    if(!selections||[selections count]<=0) return;
+    NSDictionary *dict=[selections objectAtIndex:0];
     NSString *appName=[dict objectForKey:@"appName"];
     NSString *winName=[dict objectForKey:@"window"];
     NSString *script=[NSString stringWithFormat:
