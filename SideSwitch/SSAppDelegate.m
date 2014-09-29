@@ -20,6 +20,7 @@
     [panel setIsVisible:YES];
     [panel setIsVisible:NO];
     initializing=YES;
+    [self updatePreferences:self];
     
     [NSThread detachNewThreadSelector:@selector(heartbeat:) toTarget:self withObject:nil];
 }
@@ -43,17 +44,23 @@
                 continue;
             }
             
+            CFStringRef o = CFDictionaryGetValue(dict, kCGWindowOwnerName);
+            NSString *owner = (__bridge_transfer NSString *)o;
+            
+            if ([owner isEqualToString:[[NSRunningApplication currentApplication] localizedName]]) {
+                continue;
+            }
+            
             CFStringRef n = CFDictionaryGetValue(dict, kCGWindowName);
             NSString *name = (__bridge_transfer NSString *)n;
             if(name==nil || [name isEqualToString:@""]) continue;
-            CFStringRef o = CFDictionaryGetValue(dict, kCGWindowOwnerName);
-            NSString *owner = (__bridge_transfer NSString *)o;
             NSImage *icon = [[NSImage alloc] initWithSize:NSMakeSize(32, 32)];
             NSString *appName = nil;
             NSString *ios = CFDictionaryGetValue(dict, kCGWindowIsOnscreen);
             NSInteger isOnScreen = [ios integerValue];
             
-            for(NSRunningApplication* app in apps){if([owner isEqualToString:app.localizedName]){
+            for(NSRunningApplication* app in apps){
+                if([owner isEqualToString:app.localizedName]){
                     appName=[[[app.bundleURL absoluteString] lastPathComponent] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     [icon lockFocus];
                     [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
@@ -126,10 +133,33 @@
         if([panel frame].origin.x>=0){
             if(point.x>=[panel frame].size.width) [self hideSwitcher];
         }else{
-            if(point.x<=1) [self showSwitcher];
+            switch(mousePointerAt){
+                case 0:{
+                    if(point.x<=1) [self showSwitcher];
+                    break;
+                }
+                case 1:{
+                    NSInteger height = [[NSScreen mainScreen] frame].size.height;
+                    if(point.x<=1 && point.y>=height-1) [self showSwitcher];
+                    break;
+                }
+                case 2:{
+                    if(point.x<=1 && point.y<=1) [self showSwitcher];
+                    break;
+                }
+            }
         }
         [NSThread sleepForTimeInterval:0.1f];
     }
+}
+
+- (void)showPreferencesWindow{
+    [preferencesWindow makeKeyAndOrderFront:self];
+}
+
+- (IBAction)updatePreferences:(id)sender{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    mousePointerAt = [[defaults valueForKey:@"mousePointerAt"] integerValue];
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "SSScrollView.h"
+#import "SSAppDelegate.h"
 
 @implementation SSScrollView
 
@@ -28,8 +29,13 @@
 
 + (NSMenu*)defaultMenu {
 	NSMenu * menu = [[NSMenu alloc] init];
-	[menu addItemWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""];
+	[menu addItemWithTitle:@"Preferences" action:@selector(preferences) keyEquivalent:@""];
+    [menu addItemWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""];
 	return menu;
+}
+
+- (void)preferences{
+    [appDelegate showPreferencesWindow];
 }
 
 - (void)quit{

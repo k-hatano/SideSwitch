@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SSAppDelegate.h"
 
-@interface SSScrollView : NSScrollView
+@interface SSScrollView : NSScrollView{
+    IBOutlet SSAppDelegate* appDelegate;
+}
 
+- (void)preferences;
 - (void)quit;
 
 @end

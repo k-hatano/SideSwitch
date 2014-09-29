@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="arrayController" destination="c2T-Ao-zr1" id="4iu-Uq-vhv"/>
                 <outlet property="panel" destination="0w8-HA-hwm" id="hVZ-uz-ZaM"/>
+                <outlet property="preferencesWindow" destination="y9I-9s-iJT" id="Mca-o6-Khq"/>
                 <outlet property="table" destination="2ht-K0-QHi" id="PJx-Ig-Qgb"/>
                 <outlet property="window" destination="0w8-HA-hwm" id="xEg-aH-4fM"/>
             </connections>
@@ -670,7 +671,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="SideSwitch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="0w8-HA-hwm" customClass="NSPanel">
+        <window title="SideSwitch" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="0w8-HA-hwm" customClass="NSPanel">
             <windowStyleMask key="styleMask" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="0.0" y="106" width="270" height="640"/>
@@ -725,7 +726,12 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="c2T-Ao-zr1" name="textColor" keyPath="arrangedObjects.textColor" id="39y-oJ-azd"/>
-                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="h90-VS-1G2"/>
+                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="3zK-AR-sTB">
+                                                    <dictionary key="options">
+                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -743,12 +749,22 @@
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="wWV-sG-SRN">
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
+                        <connections>
+                            <outlet property="appDelegate" destination="Voe-Tx-rLC" id="3CB-Kb-ot0"/>
+                            <outlet property="delegate" destination="Voe-Tx-rLC" id="HmZ-lF-9Lz"/>
+                        </connections>
                     </scrollView>
                 </subviews>
             </view>
         </window>
         <collectionViewItem id="39X-YK-n9W"/>
-        <userDefaultsController representsSharedInstance="YES" id="io7-L9-NJZ"/>
+        <userDefaultsController representsSharedInstance="YES" id="io7-L9-NJZ">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="mousePointerAt">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+        </userDefaultsController>
         <arrayController id="c2T-Ao-zr1">
             <declaredKeys>
                 <string>window</string>
@@ -756,5 +772,45 @@
                 <string>textColor</string>
             </declaredKeys>
         </arrayController>
+        <window title="Preferences" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="y9I-9s-iJT" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES"/>
+            <rect key="contentRect" x="196" y="240" width="560" height="59"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="j78-0A-hze">
+                <rect key="frame" x="0.0" y="0.0" width="560" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fzm-0J-NOZ">
+                        <rect key="frame" x="18" y="22" width="275" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show SideSwitch when mouse pointer is at:" id="ppU-F5-J2U">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="PfZ-QQ-4mV">
+                        <rect key="frame" x="297" y="16" width="246" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Left edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oPe-zW-bVR" id="9Cr-D0-jcv">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="6Ne-mk-9OJ">
+                                <items>
+                                    <menuItem title="Left edge of screen" state="on" id="oPe-zW-bVR"/>
+                                    <menuItem title="Topleft corner of screen" id="oWa-4K-YJc"/>
+                                    <menuItem title="Bottomleft corner of screen" id="iU9-dn-WCI"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="updatePreferences:" target="Voe-Tx-rLC" id="HtE-UA-gEH"/>
+                            <binding destination="io7-L9-NJZ" name="selectedIndex" keyPath="values.mousePointerAt" id="MoY-Wf-VV1"/>
+                        </connections>
+                    </popUpButton>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="361" y="394.5"/>
+        </window>
     </objects>
 </document>
