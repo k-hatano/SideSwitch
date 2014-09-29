@@ -123,9 +123,16 @@
     NSDictionary *dict=[selections objectAtIndex:0];
     NSString *appName=[dict objectForKey:@"appName"];
     NSString *winId=[dict objectForKey:@"winId"];
-    NSString *script=[NSString stringWithFormat:
-                      @"tell application \"%@\" \n activate first window of (windows whose id is %@) \n activate \n end tell"
-                      ,appName,winId];
+    NSString *script;
+    if([@"Finder.app" isEqualToString:appName]){
+        script=[NSString stringWithFormat:
+                @"tell application \"%@\" \n activate \n activate window id %@\n end tell"
+                ,appName,winId];
+    }else{
+        script=[NSString stringWithFormat:
+                @"tell application \"%@\" \n activate window id %@ \n activate \n end tell"
+                ,appName,winId];
+    }
     NSLog(@"%@",script);
     NSAppleScript *appleScript=[[NSAppleScript alloc] initWithSource:script];
     [appleScript executeAndReturnError:nil];

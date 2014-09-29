@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
@@ -742,7 +742,7 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AZ5-wm-xDH">
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="AZ5-wm-xDH">
                             <rect key="frame" x="0.0" y="624" width="2" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -758,13 +758,7 @@
             </view>
         </window>
         <collectionViewItem id="39X-YK-n9W"/>
-        <userDefaultsController representsSharedInstance="YES" id="io7-L9-NJZ">
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="mousePointerAt">
-                    <integer key="value" value="0"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
-        </userDefaultsController>
+        <userDefaultsController representsSharedInstance="YES" id="io7-L9-NJZ"/>
         <arrayController id="c2T-Ao-zr1">
             <declaredKeys>
                 <string>window</string>
@@ -805,12 +799,9 @@
                         </popUpButtonCell>
                         <connections>
                             <action selector="updatePreferences:" target="Voe-Tx-rLC" id="HtE-UA-gEH"/>
-                            <binding destination="io7-L9-NJZ" name="selectedIndex" keyPath="values.mousePointerAt" id="PBT-dx-9tv">
+                            <binding destination="io7-L9-NJZ" name="selectedIndex" keyPath="values.mousePointerAt" id="ZXk-Fj-Fx5">
                                 <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
-                                    <integer key="NSNullPlaceholder" value="0"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                 </dictionary>
                             </binding>
                         </connections>
