@@ -159,7 +159,16 @@
 
 - (IBAction)updatePreferences:(id)sender{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    mousePointerAt = [[defaults valueForKey:@"mousePointerAt"] integerValue];
+    @try {
+        mousePointerAt = [[defaults valueForKey:@"mousePointerAt"] integerValue];
+    }
+    @catch (NSException *exception) {
+        mousePointerAt = 0;
+    }
+    @finally {
+        if(mousePointerAt<0 || mousePointerAt>2) mousePointerAt=0;
+    }
+    
 }
 
 
