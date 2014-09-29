@@ -54,7 +54,7 @@
             NSInteger isOnScreen = [ios integerValue];
             
             for(NSRunningApplication* app in apps){if([owner isEqualToString:app.localizedName]){
-                    appName=app.localizedName;
+                    appName=[[[app.bundleURL absoluteString] lastPathComponent] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                     [icon lockFocus];
                     [app.icon drawInRect:NSMakeRect(0, 0, icon.size.width, icon.size.height)
                                 fromRect:NSMakeRect(0, 0, app.icon.size.width, app.icon.size.height)
@@ -76,10 +76,12 @@
         NSRect dstRect=[panel frame];
         dstRect.origin.x=0;
         dstRect.size.height=dstRect.size.height+1;
+        
         [table reloadData];
-        [panel setFrame:srcRect display:YES animate:NO];
+        [panel setFrame:srcRect display:NO animate:NO];
         [panel setIsVisible:YES];
         
+        [table reloadData];
         [panel setFrame:dstRect display:YES animate:YES];
         [table reloadData];
         
@@ -95,7 +97,7 @@
         NSRect dstRect=[panel frame];
         dstRect.origin.x=-dstRect.size.width;
         dstRect.size.height=dstRect.size.height-1;
-        [panel setFrame:srcRect display:YES animate:NO];
+        [panel setFrame:srcRect display:NO animate:NO];
         
         [panel setFrame:dstRect display:YES animate:YES];
         [panel setIsVisible:NO];
@@ -109,10 +111,10 @@
     if(!selections||[selections count]<=0) return;
     NSDictionary *dict=[selections objectAtIndex:0];
     NSString *appName=[dict objectForKey:@"appName"];
-    NSString *winName=[dict objectForKey:@"window"];
+    NSString *winId=[dict objectForKey:@"winId"];
     NSString *script=[NSString stringWithFormat:
-                      @"tell application \"System Events\" \n tell process \"%@\" \n set thewindow to first window of (windows whose name is \"%@\") \n tell thewindow \n perform action \"AXRaise\" \n end tell \n  set frontmost to true \n end tell \n end tell"
-                      ,appName,winName];
+                      @"tell application \"%@\" \n activate first window of (windows whose id is %@) \n activate \n end tell"
+                      ,appName,winId];
     NSLog(@"%@",script);
     NSAppleScript *appleScript=[[NSAppleScript alloc] initWithSource:script];
     [appleScript executeAndReturnError:nil];
