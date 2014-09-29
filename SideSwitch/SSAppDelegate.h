@@ -15,6 +15,7 @@
     IBOutlet NSWindow *preferencesWindow;
     
     BOOL initializing;
+    NSMutableArray *lastArray;
     NSInteger mousePointerAt;
 }
 

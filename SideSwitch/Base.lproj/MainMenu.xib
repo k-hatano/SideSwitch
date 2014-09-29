@@ -671,7 +671,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="SideSwitch" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="0w8-HA-hwm" customClass="NSPanel">
+        <window title="SideSwitch" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="0w8-HA-hwm" customClass="NSPanel">
             <windowStyleMask key="styleMask" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="0.0" y="106" width="270" height="640"/>
@@ -772,8 +772,8 @@
                 <string>textColor</string>
             </declaredKeys>
         </arrayController>
-        <window title="Preferences" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="y9I-9s-iJT" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES" nonactivatingPanel="YES"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="y9I-9s-iJT" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" utility="YES"/>
             <rect key="contentRect" x="196" y="240" width="560" height="59"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="j78-0A-hze">
@@ -805,7 +805,14 @@
                         </popUpButtonCell>
                         <connections>
                             <action selector="updatePreferences:" target="Voe-Tx-rLC" id="HtE-UA-gEH"/>
-                            <binding destination="io7-L9-NJZ" name="selectedIndex" keyPath="values.mousePointerAt" id="MoY-Wf-VV1"/>
+                            <binding destination="io7-L9-NJZ" name="selectedIndex" keyPath="values.mousePointerAt" id="PBT-dx-9tv">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
+                                    <integer key="NSNullPlaceholder" value="0"/>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </popUpButton>
                 </subviews>

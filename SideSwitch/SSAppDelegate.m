@@ -20,6 +20,7 @@
     [panel setIsVisible:YES];
     [panel setIsVisible:NO];
     initializing=YES;
+    lastArray = [[NSMutableArray alloc] init];
     [self updatePreferences:self];
     
     [NSThread detachNewThreadSelector:@selector(heartbeat:) toTarget:self withObject:nil];
@@ -28,12 +29,13 @@
 - (void)showSwitcher{
     //if([panel frame].origin.x>=0) return;
     @synchronized(self){
+        lastArray = [[NSMutableArray alloc] init];
+        
         initializing=YES;
         
         NSRange range = NSMakeRange(0, [[arrayController arrangedObjects] count]);
         [arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
         
-        [panel setIsVisible:NO];
         NSArray *apps = [[NSWorkspace sharedWorkspace] runningApplications];
         CFArrayRef windowList =CGWindowListCopyWindowInfo((kCGWindowListOptionOnScreenOnly|kCGWindowListExcludeDesktopElements), kCGNullWindowID);
         for(int i=0;i < CFArrayGetCount(windowList); i++){
@@ -74,7 +76,9 @@
             }
             if(!flg) continue;
             NSNumber *winId=CFDictionaryGetValue(dict, kCGWindowNumber);
-            [arrayController addObject:@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName,@"textColor":isOnScreen?[NSColor whiteColor]:[NSColor lightGrayColor]}];
+            NSDictionary *dic=@{@"window":name,@"icon":icon,@"winId":winId,@"appName":appName,@"textColor":isOnScreen?[NSColor whiteColor]:[NSColor lightGrayColor]};
+            [lastArray addObject:dic];
+            [arrayController addObject:dic];
         }
         [arrayController setSelectionIndex:0];
         CFBridgingRelease(windowList);
@@ -147,6 +151,9 @@
                     if(point.x<=1 && point.y<=1) [self showSwitcher];
                     break;
                 }
+                default:{
+                    break;
+                }
             }
         }
         [NSThread sleepForTimeInterval:0.1f];
@@ -159,14 +166,9 @@
 
 - (IBAction)updatePreferences:(id)sender{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    @try {
-        mousePointerAt = [[defaults valueForKey:@"mousePointerAt"] integerValue];
-    }
-    @catch (NSException *exception) {
-        mousePointerAt = 0;
-    }
-    @finally {
-        if(mousePointerAt<0 || mousePointerAt>2) mousePointerAt=0;
+    id value = [defaults valueForKey:@"mousePointerAt"];
+    if (value){
+        mousePointerAt = [value integerValue];
     }
     
 }
