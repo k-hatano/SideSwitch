@@ -703,9 +703,8 @@
                                             <imageCell key="dataCell" lineBreakMode="truncatingTail" continuous="YES" alignment="left" animates="YES" imageAlignment="top" imageScaling="proportionallyDown" id="Dlr-yB-iz2"/>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.icon" id="zm2-oP-luk">
+                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.icon" id="DhK-YR-Lah">
                                                     <dictionary key="options">
-                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                         <string key="NSValueTransformerName">SSImageTransformer</string>
                                                     </dictionary>
@@ -725,10 +724,9 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="c2T-Ao-zr1" name="textColor" keyPath="arrangedObjects.textColor" id="39y-oJ-azd"/>
-                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="3zK-AR-sTB">
+                                                <binding destination="c2T-Ao-zr1" name="value" keyPath="arrangedObjects.window" id="L3N-pv-hQD">
                                                     <dictionary key="options">
-                                                        <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                        <bool key="NSConditionallySetsEditable" value="YES"/>
                                                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                                     </dictionary>
                                                 </binding>
@@ -742,7 +740,7 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="AZ5-wm-xDH">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="AZ5-wm-xDH">
                             <rect key="frame" x="0.0" y="624" width="2" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -751,7 +749,6 @@
                         </scroller>
                         <connections>
                             <outlet property="appDelegate" destination="Voe-Tx-rLC" id="3CB-Kb-ot0"/>
-                            <outlet property="delegate" destination="Voe-Tx-rLC" id="HmZ-lF-9Lz"/>
                         </connections>
                     </scrollView>
                 </subviews>
@@ -779,7 +776,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show SideSwitch when mouse pointer is at:" id="ppU-F5-J2U">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
